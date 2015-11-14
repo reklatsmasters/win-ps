@@ -1,4 +1,8 @@
 # win-ps
+[![npm](https://img.shields.io/npm/v/win-ps.svg)](https://npmjs.org/package/win-ps)
+[![license](https://img.shields.io/npm/l/win-ps.svg)](https://npmjs.org/package/win-ps)
+[![downloads](https://img.shields.io/npm/dm/win-ps.svg)](https://npmjs.org/package/win-ps)
+[![Code Climate](https://codeclimate.com/github/ReklatsMasters/win-ps/badges/gpa.svg)](https://codeclimate.com/github/ReklatsMasters/win-ps)
 >Process list in windows
 
 ### Install
