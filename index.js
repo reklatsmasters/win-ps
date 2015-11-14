@@ -27,7 +27,7 @@ function build_shell(fields) {
  * @param  {Array} fields fields to select
  * @return {Promise}	    resolved to array of processes
  */
-function snapshot(fields) {
+exports.snapshot = function snapshot(fields) {
 	var ps = build_shell(fields);
 	var data = [];
 
@@ -44,5 +44,3 @@ function snapshot(fields) {
 		})
 	})
 }
-
-module.exports = snapshot;
