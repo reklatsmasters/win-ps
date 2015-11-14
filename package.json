@@ -4,7 +4,7 @@
   "description": "Get process list in windows",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/mocha/bin/mocha -r should -r should-promised -R spec"
   },
   "engines": {
     "node": ">=4"
@@ -30,5 +30,10 @@
   "bugs": {
     "url": "https://github.com/reklatsmasters/win-ps/issues"
   },
-  "homepage": "https://github.com/reklatsmasters/win-ps#readme"
+  "homepage": "https://github.com/reklatsmasters/win-ps#readme",
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "should": "^7.1.1",
+    "should-promised": "^0.3.1"
+  }
 }
