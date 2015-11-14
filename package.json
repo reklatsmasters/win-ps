@@ -1,0 +1,34 @@
+{
+  "name": "win-ps",
+  "version": "0.0.0",
+  "description": "Get process list in windows",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reklatsmasters/win-ps.git"
+  },
+  "keywords": [
+    "windows",
+    "win",
+    "process",
+    "list",
+    "tasklist",
+    "task list",
+    "process",
+    "process list",
+    "task",
+    "taskmgr"
+  ],
+  "author": "Dmitry Tsvettsikh <me@reklatsmasters.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reklatsmasters/win-ps/issues"
+  },
+  "homepage": "https://github.com/reklatsmasters/win-ps#readme"
+}
