@@ -14,10 +14,10 @@ const command = {
  * @return {Object}        child_process instance
  */
 function build_shell(fields) {
-	var fields = fields || 'ProcessId,Name,Path,ParentProcessId,Priority';
+	var fields = Array.isArray(fields) ? fields : ['ProcessId', 'Name','Path','ParentProcessId','Priority'];
 
 	var args = command.shell_arg.split(' ');
-	args.push(`${command.ps} | ${command.select} ${fields} | ${command.convert}`);
+	args.push(`${command.ps} | ${command.select} ${fields.join(',')} | ${command.convert}`);
 
 	return shell(command.shell, args);
 }
