@@ -26,4 +26,15 @@ describe('func snapshot', () => {
       data[0].should.be.an.Object().and.have.keys('CommandLine');
     })
   })
+  
+  it('aliases should work', () => {
+    var snap = ps.snapshot([{ "ProcessId": "pid" }, "name"]);
+    snap.should.be.a.Promise();
+
+    return snap.then((data) => {
+      data.should.be.an.Array().and.not.empty();
+
+      data[0].should.be.an.Object().and.have.keys(['pid', 'name']);
+    })
+  })
 })

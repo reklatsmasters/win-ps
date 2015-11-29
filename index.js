@@ -1,3 +1,4 @@
+'use strict';
 const shell = require('child_process').spawn;
 
 const command = {
@@ -5,7 +6,35 @@ const command = {
 	shell_arg: "-NoProfile -ExecutionPolicy Bypass -Command",
 	ps: "get-wmiobject win32_process",
 	select: "select",
-	convert: "convertto-json -compress"
+	convert: "convertto-json -compress",
+	alias: (from, to) => `@{ Name = '${to}'; Expression = { $_.${ from } }}`
+}
+
+const isAlias = field => field && (typeof field === 'object') && Object.keys(field).length >= 1;
+
+function toAlias(map) {
+	var fields = [];
+	
+	for (let from of Object.keys(map)) {
+		fields.push(command.alias(from, map[from]));
+	}
+	
+	return fields;
+}
+
+function normalizeFields(fields) {
+	var normalFields = [];
+	
+	for (let field of fields) {
+		if (isAlias(field)) {
+			var keys = toAlias(field);
+			normalFields = normalFields.concat(keys);
+		} else {
+			normalFields.push(field);
+		}
+	}
+	
+	return normalFields;
 }
 
 /**
@@ -14,10 +43,10 @@ const command = {
  * @return {Object}        child_process instance
  */
 function build_shell(fields) {
-	var fields = Array.isArray(fields) ? fields : ['ProcessId', 'Name','Path','ParentProcessId','Priority'];
-
+	var $fields = Array.isArray(fields) ? normalizeFields(fields) : ['ProcessId','Name','Path','ParentProcessId','Priority'];
+	
 	var args = command.shell_arg.split(' ');
-	args.push(`${command.ps} | ${command.select} ${fields.join(',')} | ${command.convert}`);
+	args.push(`${command.ps} | ${command.select} ${ $fields.join(',') } | ${command.convert}`);
 
 	return shell(command.shell, args);
 }
